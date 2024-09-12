@@ -1,6 +1,5 @@
 import 'dart:ffi';
-
-import 'package:conversor/controller/home_controller';
+import 'package:conversor/controller/home_controller.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,11 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Conversor de Moedas")),
+        title: const Center(child: Text("Conversor de Moedas",
+        style: TextStyle(color: Colors.white
+            ),
+          )
+        ),
       ),
       body: SizedBox(
         width: double.infinity,
@@ -27,7 +30,7 @@ class _HomeViewState extends State<HomeView> {
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image.asset(
-                'assets/images/exchange.png',
+                'assets/images/coin-removebg-preview.png',
                 width: 200,
               ),
             ),
@@ -42,13 +45,8 @@ class _HomeViewState extends State<HomeView> {
                 decoration: const InputDecoration(label: Text("Valor: R\$")),
                 onChanged: (value) {
                   setState(() {
-                    valorEntrada = double.tryParse(value) ?? 0.0;
-                    Map<String, double> valores = {
-                        "USD" : 5.00,
-                        "BTC" : 0.0000000007,
-                        "EUR" : 6.50
-                      };
-                    resultado = valorEntrada * valores[moedaSelecionada]!;                    
+                    controller.valorEntrada = double.tryParse(value) ?? 0.0;
+                    controller.calcular();            
                   });
                 },
               ),
@@ -68,6 +66,7 @@ class _HomeViewState extends State<HomeView> {
                   textStyle: TextStyle(fontSize: 16)),
               radioButtonValue: (value) {
                 controller.moedaSelecionada = value.toString();
+                controller.calcular();
               }, 
               selectedColor: Colors.black,
               defaultSelected: controller.moedaSelecionada,

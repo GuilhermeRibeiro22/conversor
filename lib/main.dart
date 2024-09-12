@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 17, 148, 24)),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.greenAccent
-        )
+          backgroundColor: Color.fromARGB(230, 2, 188, 45))
       ),
       home: const HomeView(),
     );
