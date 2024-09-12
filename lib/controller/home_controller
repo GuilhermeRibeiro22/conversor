@@ -1,0 +1,10 @@
+
+class HomeController{
+  // Lista de moedas válidas:
+  List<String> siglasMoedasValidas = ["USD", "BTC", "EUR"];
+  List<String> nomeMoedasValidas = ["Dolar", "Bitcoin", "Euro"];
+
+  double valorEntrada = 0;
+  double resultado = 0;
+  String moedaSelecionada = "USD";
+}
